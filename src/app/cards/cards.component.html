@@ -16,7 +16,7 @@
                   </ul>
                 </div>
                 <!-- END dropdown-->
-                <div class="card-title">路由參數 Type: {{(route.params|async).type}}</div>
+                <div class="card-title">路由參數 Type:{{type}}</div>
               </div>
               <div class="card-body">
                 <p>Nulla egestas faucibus tincidunt.</p>
@@ -49,7 +49,8 @@
               </div>
               <div class="card-footer">
                 <button type="button" (click)="GoNext(+1)" class="btn btn-flat btn-default">+ 1</button>
-                <button type="button" (click)="GoNext(-1)" class="btn btn-flat btn-default">- 1</button>
+                <!--相對位址導覽(相對於目前的路由的網址路徑)-->
+                <button type="button" [routerLink]="['..', (+this.type)-1]" class="btn btn-flat btn-default">- 1</button>
               </div>
             </div>
           </div>
