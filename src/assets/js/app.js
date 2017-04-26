@@ -745,6 +745,7 @@
 (function() {
     'use strict';
 
+    //等同於 $(function(){}); document.ready時執行
     $(initDashboard);
 
     function initDashboard() {
