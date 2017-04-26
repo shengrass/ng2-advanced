@@ -11,11 +11,13 @@
     constructor(private router: Router, private route: ActivatedRoute) { }
 
     type;
+    num;
     ngOnInit() {
       // 透過 params 這個 Observable 物件來取得參數值(比較常用)
       this.route.params.subscribe((params) => {
         console.log(params);
         this.type = params['type'];
+        this.num = params['num'];
       });
       //透過snapshot (快照) 取得執行當下的參數值(僅初始值)
       //this.type = this.route.snapshot.params['type'];
@@ -30,15 +32,19 @@
 
     GoNext(num: number) {
       //+this.type是為了轉型成number
-      let nextid = +this.type + num;
+      let nextid = (+this.type) + num;
 
       //絕對位址導覽
       //this.router.navigate(['/cards', nextid]);
       //this.router.navigateByUrl('/cards/' + nextid);
 
       //相對位址導覽(相對於目前的路由的網址路徑)
-      this.router.navigate(['..', nextid], {
-        relativeTo: this.route
+      this.router.navigate(['..', nextid, { num : (+this.num) + num }], {
+        relativeTo: this.route,
+        queryParams: {
+          p3: 3,
+          p4: 4
+        }
       });
     }
   }

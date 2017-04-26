@@ -36,7 +36,7 @@
           <div class="col-sm-6 col-xs-12">
             <div class="card">
               <div class="card-heading bg-primary">
-                <div class="card-title">Paracosm</div>
+                <div class="card-title">num: {{num}}</div>
               </div>
               <div class="card-offset">
                 <div class="card-offset-item text-right">
@@ -50,7 +50,7 @@
               <div class="card-footer">
                 <button type="button" (click)="GoNext(+1)" class="btn btn-flat btn-default">+ 1</button>
                 <!--相對位址導覽(相對於目前的路由的網址路徑)-->
-                <button type="button" [routerLink]="['..', (+this.type)-1]" class="btn btn-flat btn-default">- 1</button>
+                <button type="button" [routerLink]="['..', (+this.type)-1, {num: (+this.num)-1}]" [queryParams]="{ p1: 1, p2: 2 }" class="btn btn-flat btn-default">- 1</button>
               </div>
             </div>
           </div>
