@@ -1,9 +1,6 @@
-import { FlotComponent } from './charts/flot/flot.component';
 import { CardsComponent } from './cards/cards.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { fallbackRoute } from './shared/fallback-route';
-import { Page2Component } from './page2/page2.component';
-import { Page1Component } from './page1/page1.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Route } from '@angular/router';
 
@@ -14,14 +11,7 @@ const routes: Routes = [
   //定義轉向路由:不輸入path時，會預設導入dashboard
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'cards/:type', component: CardsComponent },
-  {
-    path: 'charts',
-    children: [
-      { path: '', redirectTo: 'flot', pathMatch: 'full' },
-      { path: 'flot', component: FlotComponent }
-    ]
-  }
+  { path: 'cards/:type', component: CardsComponent }
   //先隱藏，協助 Debug
   //fallbackRoute
 ];
