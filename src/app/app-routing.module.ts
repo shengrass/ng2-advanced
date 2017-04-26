@@ -1,3 +1,4 @@
+import { FlotComponent } from './charts/flot/flot.component';
 import { CardsComponent } from './cards/cards.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { fallbackRoute } from './shared/fallback-route';
@@ -13,7 +14,14 @@ const routes: Routes = [
   //定義轉向路由:不輸入path時，會預設導入dashboard
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'cards', component: CardsComponent }
+  { path: 'cards/:type', component: CardsComponent },
+  {
+    path: 'charts',
+    children: [
+      { path: '', redirectTo: 'flot', pathMatch: 'full' },
+      { path: 'flot', component: FlotComponent }
+    ]
+  }
   //先隱藏，協助 Debug
   //fallbackRoute
 ];

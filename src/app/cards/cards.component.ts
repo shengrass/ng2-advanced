@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
+  type;
   ngOnInit() {
+    // 透過 params 這個 Observable 物件來取得參數值(比較常用)
+    this.route.params.subscribe((params) => {
+      console.log(params);
+      this.type = params['type'];
+    });
+    //透過snapshot (快照) 取得執行當下的參數值(僅初始值)
+    //this.type = this.route.snapshot.params['type'];
   }
 
+  GoFlot() {
+    // 傳入字串
+    //this.router.navigateByUrl('/charts/flot');
+    // 傳入陣列
+    this.router.navigate(['charts','flot']);
+  }
 }
