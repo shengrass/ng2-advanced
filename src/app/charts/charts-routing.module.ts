@@ -3,13 +3,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'charts',
-    children: [
-      { path: '', redirectTo: 'flot', pathMatch: 'full' },
-      { path: 'flot', component: FlotComponent }
-    ]
-  }
+  { path: '', redirectTo: 'flot', pathMatch: 'full' },
+  { path: 'flot', component: FlotComponent }
 ];
 
 @NgModule({

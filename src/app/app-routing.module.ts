@@ -11,7 +11,12 @@ const routes: Routes = [
   //定義轉向路由:不輸入path時，會預設導入dashboard
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'cards/:type', component: CardsComponent }
+  { path: 'cards/:type', component: CardsComponent },
+  //檔案路徑(不含.ts)#模組名稱
+  {
+    path: 'charts',
+    loadChildren: './charts/charts.module#ChartsModule'
+  }
   //先隱藏，協助 Debug
   //fallbackRoute
 ];
