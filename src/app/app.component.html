@@ -4,9 +4,17 @@
 <hr>
 <ol>
   <!--如果有用中括號包著就可以傳入Array，否則只能傳入string-->
-  <li><a [routerLink]="['/']">Home</a></li>
-  <li><a routerLink="/page1">Page1</a></li>
-  <li><a routerLink="/page2">Page2</a></li>
+  <!--在路由連結套用 Active 樣式-->
+  <!--避免套用 routerLinkActive 到上層路徑：[routerLinkActiveOptions]="{exact: true}-->
+  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a [routerLink]="['/']">Home</a>
+  </li>
+  <li routerLinkActive="active">
+    <a routerLink="/page1">Page1</a>
+  </li>
+  <li routerLinkActive="active">
+    <a routerLink="/page2">Page2</a>
+  </li>
 </ol>
 <hr>
 <!--把Component放在<router-outlet>裡面-->

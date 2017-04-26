@@ -11,6 +11,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
+    //IE9(含)以下瀏覽器，就要設定useHash為true，不過網址會多一個#符號
     useHash: false,
     //在瀏覽器的 F12 Console 會顯示 Log
     enableTracing: false
