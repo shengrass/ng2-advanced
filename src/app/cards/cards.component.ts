@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, public route: ActivatedRoute) { }
 
   type;
   ngOnInit() {
@@ -25,6 +25,13 @@ export class CardsComponent implements OnInit {
     // 傳入字串
     //this.router.navigateByUrl('/charts/flot');
     // 傳入陣列
-    this.router.navigate(['charts','flot']);
+    this.router.navigate(['charts', 'flot']);
+  }
+
+  GoNext(num: number) {
+    //+this.type是為了轉型成number
+    let nextid = +this.type + num;
+    this.router.navigate(['/cards', nextid]);
+    //this.router.navigateByUrl('/cards/' + nextid)
   }
 }

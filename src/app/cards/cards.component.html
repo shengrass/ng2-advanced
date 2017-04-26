@@ -16,7 +16,7 @@
                   </ul>
                 </div>
                 <!-- END dropdown-->
-                <div class="card-title">路由參數 Type:{{type}}</div>
+                <div class="card-title">路由參數 Type: {{(route.params|async).type}}</div>
               </div>
               <div class="card-body">
                 <p>Nulla egestas faucibus tincidunt.</p>
@@ -48,8 +48,8 @@
                   lorem par.</p>
               </div>
               <div class="card-footer">
-                <button type="button" class="btn btn-flat btn-default">Action 1</button>
-                <button type="button" class="btn btn-flat btn-default">Action 2</button>
+                <button type="button" (click)="GoNext(+1)" class="btn btn-flat btn-default">+ 1</button>
+                <button type="button" (click)="GoNext(-1)" class="btn btn-flat btn-default">- 1</button>
               </div>
             </div>
           </div>
