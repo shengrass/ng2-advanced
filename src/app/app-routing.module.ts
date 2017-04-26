@@ -10,7 +10,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    useHash: false,
+    //在瀏覽器的 F12 Console 會顯示 Log
+    enableTracing: false
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

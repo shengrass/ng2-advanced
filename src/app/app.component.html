@@ -1,5 +1,13 @@
 <h1>
   {{title}}
 </h1>
+<hr>
+<ol>
+  <!--如果有用中括號包著就可以傳入Array，否則只能傳入string-->
+  <li><a [routerLink]="['/']">Home</a></li>
+  <li><a routerLink="/page1">Page1</a></li>
+  <li><a routerLink="/page2">Page2</a></li>
+</ol>
+<hr>
 <!--把Component放在<router-outlet>裡面-->
 <router-outlet></router-outlet>
