@@ -11,8 +11,9 @@ const routes: Routes = [
   //定義轉向路由:不輸入path時，會預設導入page1
   { path: '', redirectTo: 'page1', pathMatch: 'full' },
   { path: 'page1', component: Page1Component },
-  { path: 'page2', component: Page2Component },
-  fallbackRoute
+  { path: 'page2', component: Page2Component }
+  //先隱藏，協助 Debug
+  //fallbackRoute
 ];
 
 @NgModule({
