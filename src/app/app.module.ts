@@ -11,6 +11,7 @@ import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ClassicComponent } from './form/classic/classic.component';
+import { Classic2Component } from './form/classic2/classic2.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ClassicComponent } from './form/classic/classic.component';
     CardsComponent,
     LoginComponent,
     LayoutComponent,
-    ClassicComponent
+    ClassicComponent,
+    Classic2Component
   ],
   //依序載入
   imports: [

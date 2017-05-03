@@ -4,67 +4,44 @@
     <p class="mb-lg">Standard Bootstrap form and input controls with customized UI variations</p>
     <pre>
       data = {{ data | json }}
-      f.value = {{ f.value | json }}
-      f.valid = {{ f.valid | json }}
-      f.invalid = {{ f.invalid | json }}
-      f.dirty = {{ f.dirty | json }}
-      f.pristine = {{ f.pristine | json }}
-      f.touched = {{ f.touched | json }}
-      f.untouched = {{ f.untouched | json }}
+      form.value = {{ form.value | json }}
+      form.valid = {{ form.valid | json }}
+      form.invalid = {{ form.invalid | json }}
+      form.dirty = {{ form.dirty | json }}
+      form.pristine = {{ form.pristine | json }}
+      form.touched = {{ form.touched | json }}
+      form.untouched = {{ form.untouched | json }}
     </pre>
     <div class="card">
       <div class="card-body">
-        <!--novalidate: 關閉瀏覽器內建的欄位驗證-->
-        <form (ngSubmit)="doSubmit(f)" class="form-horizontal" #f="ngForm" novalidate>
+        <form [formGroup]="form" class="form-horizontal">
           <fieldset>
-            <div class="form-group" [class.has-error]="fName.touched && fName.invalid">
-              <label class="col-sm-2 control-label">姓名</label>
+            <div class="form-group" [class.has-error]="form.controls.name.invalid">
+              <label class="col-sm-2 control-label">Name</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control rounded" required name="name" [ngModel]="data.name" #fName="ngModel">
+                <input type="text" formControlName="name" class="form-control rounded">
                 <span class="help-block">
-                  <pre>
-                    fName.value = {{ fName.value | json }}
-                    fName.errors = {{ fName.errors | json }}
-                    fName.valid = {{ fName.valid | json }}
-                    fName.invalid = {{ fName.invalid | json }}
-                    fName.dirty = {{ fName.dirty | json }}
-                    fName.pristine = {{ fName.pristine | json }}
-                    fName.touched = {{ fName.touched | json }}
-                    fName.untouched = {{ fName.untouched | json }}
-                  </pre>
-                </span>
+                   <pre>
+                      form.controls.name.value = {{ form.controls.name.value | json }}
+                      form.controls.name.errors = {{ form.controls.name.errors | json }}
+                      form.controls.name.valid = {{ form.controls.name.valid | json }}
+                      form.controls.name.invalid = {{ form.controls.name.invalid | json }}
+                      form.controls.name.dirty = {{ form.controls.name.dirty | json }}
+                      form.controls.name.pristine = {{ form.controls.name.pristine | json }}
+                      form.controls.name.touched = {{ form.controls.name.touched | json }}
+                      form.controls.name.untouched = {{ form.controls.name.untouched | json }}</pre>
+                 </span>
               </div>
             </div>
           </fieldset>
-          <div ngModelGroup="secret" #gSecret="ngModelGroup">
-            <fieldset>
-              <div class="form-group" [class.has-error]="fSid.touched && fSid.invalid">
-                <label class="col-sm-2 control-label">身分證字號</label>
-                <div class="col-sm-10">
-                  <!--[required]="fName.valid" => 在fName有填值的情況下，此欄位(fSid)才必填-->
-                  <input type="text" class="form-control" name="sid" placeholder="請輸入 10 碼身份證字號" [ngModel]="data.sid" #fSid="ngModel" [required]="fName.valid"
-                    minlength="10" maxlength="10">
-                  <span class="help-block">
-                  <!--fSid.errors.required、error可為null-->
-                  <span *ngIf="fSid.touched && fSid.errors?.required">此欄位必填</span>
-                  <pre>
-                    fSid.value = {{ fSid.value | json }}
-                    fSid.errors = {{ fSid.errors | json }}
-                    fSid.valid = {{ fSid.valid | json }}
-                    fSid.invalid = {{ fSid.invalid | json }}
-                    fSid.dirty = {{ fSid.dirty | json }}
-                    fSid.pristine = {{ fSid.pristine | json }}
-                    fSid.touched = {{ fSid.touched | json }}
-                    fSid.untouched = {{ fSid.untouched | json }}
-                  </pre>
-                  </span>
-                  <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-                </div>
+          <fieldset>
+            <div class="form-group" [class.has-error]="">
+              <label class="col-sm-2 control-label">身分證字號</label>
+              <div class="col-sm-10">
+                <input type="text" formControlName="sid" class="form-control"><span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
               </div>
-            </fieldset>
-          </div>
-          <input type="submit" value="送出">
-          <input type="button" value="重設" (click)="doReset(f)">
+            </div>
+          </fieldset>
           <fieldset>
             <div class="form-group">
               <label for="input-id-1" class="col-sm-2 control-label">Label focus</label>
