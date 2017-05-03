@@ -2,7 +2,15 @@
   <div class="container-fluid">
     <h5 class="mt0">Classic form controls and custom variants</h5>
     <p class="mb-lg">Standard Bootstrap form and input controls with customized UI variations</p>
-    <pre>{{ f.value | json }}</pre>
+    <pre>
+      f.value = {{ f.value | json }}
+      f.valid = {{ f.valid | json }}
+      f.invalid = {{ f.invalid | json }}
+      f.dirty = {{ f.dirty | json }}
+      f.pristine = {{ f.pristine | json }}
+      f.touched = {{ f.touched | json }}
+      f.untouched = {{ f.untouched | json }}
+    </pre>
     <div class="card">
       <div class="card-body">
         <form method="post" action="/" class="form-horizontal" #f="ngForm">
