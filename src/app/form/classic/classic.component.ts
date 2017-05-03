@@ -24,4 +24,10 @@ export class ClassicComponent implements OnInit {
     f.reset(this.data);
   }
 
+  showLoading(fTest:HTMLButtonElement){
+    let old = fTest.value;
+    fTest.value="Loading...";
+    setTimeout(function(){ fTest.value = old }, 3000);
+  }
+
 }
