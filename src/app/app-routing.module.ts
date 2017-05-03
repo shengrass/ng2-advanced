@@ -1,3 +1,5 @@
+import { EnsureInputGuard } from './ensure-input.guard';
+import { LoginGuard } from './login.guard';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CardsComponent } from './cards/cards.component';
@@ -5,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { fallbackRoute } from './shared/fallback-route';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule, Route } from '@angular/router';
+import { ClassicComponent } from "app/form/classic/classic.component";
 
 //路由的做法就是不斷切換Component
 const routes: Routes = [
@@ -20,13 +23,15 @@ const routes: Routes = [
       //檔案路徑(不含.ts)#模組名稱
       {
         path: 'charts',
-        loadChildren: './charts/charts.module#ChartsModule'
-      }
+        loadChildren: './charts/charts.module#ChartsModule',
+        canActivate:[LoginGuard]
+      },
+      { path: 'form/classic', component: ClassicComponent }
       //先隱藏，協助 Debug
       //fallbackRoute
     ]
   },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent, canDeactivate: [EnsureInputGuard] }
 ];
 
 @NgModule({
