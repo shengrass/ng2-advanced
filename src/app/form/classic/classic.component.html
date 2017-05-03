@@ -20,7 +20,7 @@
               <label class="col-sm-2 control-label">姓名</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control rounded" required name="name"
-                       [(ngModel)]="data.name" #fName="ngModel">
+                       [ngModel]="data.name" #fName="ngModel">
                 <span class="help-block">
                   <pre>
                     fName.value = {{ fName.value | json }}
@@ -41,7 +41,7 @@
               <label class="col-sm-2 control-label">身分證字號</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="sid" placeholder="請輸入 10 碼身份證字號"
-                       [(ngModel)]="data.sid" #fSid="ngModel" required minlength="10" maxlength="10">
+                       [ngModel]="data.sid" #fSid="ngModel" required minlength="10" maxlength="10">
                 <span class="help-block">
                   <!--fSid.errors.required、error可為null-->
                   <span *ngIf="fSid.touched && fSid.errors?.required">此欄位必填</span>
