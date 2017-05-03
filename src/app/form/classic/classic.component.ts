@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from "@angular/forms/forms";
 
 @Component({
   selector: 'app-classic',
@@ -6,13 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./classic.component.css']
 })
 export class ClassicComponent implements OnInit {
-  data: any;
+  data: any = {
+    name: 'Will',
+    sid: 'A123456789'
+  };
   constructor() { }
 
   ngOnInit() {
-    this.data = {
-      name: 'Will'
-    };
+  }
+
+  doSubmit(f: NgForm) {
+    console.log(this.data);
+  }
+
+  doReset(f: NgForm) {
+    f.reset();
   }
 
 }

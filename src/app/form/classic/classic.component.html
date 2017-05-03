@@ -3,6 +3,7 @@
     <h5 class="mt0">Classic form controls and custom variants</h5>
     <p class="mb-lg">Standard Bootstrap form and input controls with customized UI variations</p>
     <pre>
+      data = {{ data | json }}
       f.value = {{ f.value | json }}
       f.valid = {{ f.valid | json }}
       f.invalid = {{ f.invalid | json }}
@@ -13,31 +14,54 @@
     </pre>
     <div class="card">
       <div class="card-body">
-        <form method="post" action="/" class="form-horizontal" #f="ngForm">
+        <form (ngSubmit)="doSubmit(f)" class="form-horizontal" #f="ngForm">
           <fieldset>
-            <div class="form-group" [class.has-error]="fName.invalid">
-              <label class="col-sm-2 control-label">Name</label>
+            <div class="form-group" [class.has-error]="fName.touched && fName.invalid">
+              <label class="col-sm-2 control-label">姓名</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control rounded" required name="name" [ngModel]="data.name" #fName="ngModel">
+                <input type="text" class="form-control rounded" required name="name"
+                       [(ngModel)]="data.name" #fName="ngModel">
                 <span class="help-block">
-                  <pre>fName.valid = {{ fName.valid | json }}</pre>
-                  <pre>fName.invalid = {{ fName.invalid | json }}</pre>
-                  <pre>fName.dirty = {{ fName.dirty | json }}</pre>
-                  <pre>fName.pristine = {{ fName.pristine | json }}</pre>
-                  <pre>fName.touched = {{ fName.touched | json }}</pre>
-                  <pre>fName.untouched = {{ fName.untouched | json }}</pre>
+                  <pre>
+                    fName.value = {{ fName.value | json }}
+                    fName.errors = {{ fName.errors | json }}
+                    fName.valid = {{ fName.valid | json }}
+                    fName.invalid = {{ fName.invalid | json }}
+                    fName.dirty = {{ fName.dirty | json }}
+                    fName.pristine = {{ fName.pristine | json }}
+                    fName.touched = {{ fName.touched | json }}
+                    fName.untouched = {{ fName.untouched | json }}
+                  </pre>
                 </span>
               </div>
             </div>
           </fieldset>
           <fieldset>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">With help</label>
+            <div class="form-group" [class.has-error]="fSid.touched && fSid.invalid">
+              <label class="col-sm-2 control-label">身分證字號</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control"><span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                <input type="text" class="form-control" name="sid" placeholder="請輸入 10 碼身份證字號"
+                       [(ngModel)]="data.sid" #fSid="ngModel" required minlength="10" maxlength="10">
+                <span class="help-block">
+                  <!--fSid.errors.required、error可為null-->
+                  <span *ngIf="fSid.touched && fSid.errors?.required">此欄位必填</span>
+                  <pre>
+                    fSid.value = {{ fSid.value | json }}
+                    fSid.errors = {{ fSid.errors | json }}
+                    fSid.valid = {{ fSid.valid | json }}
+                    fSid.invalid = {{ fSid.invalid | json }}
+                    fSid.dirty = {{ fSid.dirty | json }}
+                    fSid.pristine = {{ fSid.pristine | json }}
+                    fSid.touched = {{ fSid.touched | json }}
+                    fSid.untouched = {{ fSid.untouched | json }}
+                  </pre>
+                </span>
+                <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
               </div>
             </div>
           </fieldset>
+          <input type="submit" value="送出">
+          <input type="button" value="重設" (click)="doReset(f)">
           <fieldset>
             <div class="form-group">
               <label for="input-id-1" class="col-sm-2 control-label">Label focus</label>
