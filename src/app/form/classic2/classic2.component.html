@@ -54,16 +54,21 @@
               </div>
             </div>
           </fieldset>
+          <div formArrayName="addresses">
+            <fieldset *ngFor="let ctrl of form.controls.addresses.controls; let idx=index;">
+              <div class="form-group" [class.has-error]="ctrl.touched && ctrl.invalid">
+                <label for="input-id-{{idx+1}}" class="col-sm-2 control-label">地址 {{idx+1}}</label>
+                <div class="col-sm-10">
+                  <input id="input-id-{{idx+1}}" [formControlName]="idx" type="text" class="form-control">
+                </div>
+              </div>
+            </fieldset>
+             <input type="button" value="新增地址" (click)="addAddress()">
+          </div>
+
           <input type="submit" value="送出">
           <input type="button" value="重設" (click)="doReset()">
-          <fieldset>
-            <div class="form-group">
-              <label for="input-id-1" class="col-sm-2 control-label">Label focus</label>
-              <div class="col-sm-10">
-                <input id="input-id-1" type="text" class="form-control">
-              </div>
-            </div>
-          </fieldset>
+
           <fieldset>
             <div class="form-group">
               <label class="col-sm-2 control-label">Password</label>

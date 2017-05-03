@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from "@angular/forms";
 
 @Component({
   selector: 'app-classic2',
@@ -25,10 +25,18 @@ export class Classic2Component implements OnInit {
           Validators.minLength(10),
           Validators.maxLength(10)
         ]
-      ]
+      ],
+      'addresses': this.fb.array([
+        this.fb.control('Address 1', Validators.required),
+        this.fb.control('Address 2', Validators.required)
+      ])
     });
   }
 
+  addAddress() {
+    let addresses = this.form.controls.addresses as FormArray;
+    addresses.push(this.fb.control('', Validators.required));
+  }
   doSubmit() {
     console.log(this.form.value);
   }
