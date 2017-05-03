@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from "@angular/forms";
+import { ValidatorSidFormat } from "app/shared/sid-format-validator";
+
+export class DataModel {
+  name = 'Will';
+  sid = 'A123456789';
+}
 
 @Component({
   selector: 'app-classic2',
@@ -7,10 +13,7 @@ import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from "@ang
   styleUrls: ['./classic2.component.css']
 })
 export class Classic2Component implements OnInit {
-  data: any = {
-    name: 'Will',
-    sid: 'A123456789'
-  };
+  data: any = new DataModel();
   form: FormGroup;
   constructor(private fb: FormBuilder) { }
 
@@ -23,7 +26,8 @@ export class Classic2Component implements OnInit {
         'A123456789', [
           Validators.required,
           Validators.minLength(10),
-          Validators.maxLength(10)
+          Validators.maxLength(10),
+          ValidatorSidFormat
         ]
       ],
       'addresses': this.fb.array([
