@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ContentChild } from '@angular/core';
 
 @Component({
   selector: 'app-block',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlockComponent implements OnInit {
 
+  @ContentChild('btn')
+  btn: ElementRef;
   constructor() { }
 
   ngOnInit() {
   }
 
+  ngAfterContentInit() {
+    this.btn.nativeElement.innerHTML = '100';
+  }
 }
