@@ -8,6 +8,7 @@ import { fallbackRoute } from './shared/fallback-route';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule, Route } from '@angular/router';
 import { ClassicComponent } from "app/form/classic/classic.component";
+import { Classic2Component } from "app/form/classic2/classic2.component";
 
 //路由的做法就是不斷切換Component
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
         loadChildren: './charts/charts.module#ChartsModule',
         canActivate:[LoginGuard]
       },
-      { path: 'form/classic', component: ClassicComponent }
+      { path: 'form/classic', component: ClassicComponent },
+      { path: 'form/classic2', component: Classic2Component }
       //先隱藏，協助 Debug
       //fallbackRoute
     ]
