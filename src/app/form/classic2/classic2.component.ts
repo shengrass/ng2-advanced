@@ -22,11 +22,18 @@ export class Classic2Component implements OnInit {
       'sid': [
         'A123456789', [
           Validators.required,
-          Validators.maxLength(10),
-          Validators.minLength(10)
+          Validators.minLength(10),
+          Validators.maxLength(10)
         ]
       ]
     });
   }
 
+  doSubmit() {
+    console.log(this.form.value);
+  }
+
+  doReset() {
+    this.form.reset(this.data);
+  }
 }

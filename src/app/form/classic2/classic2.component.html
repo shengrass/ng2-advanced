@@ -14,7 +14,7 @@
     </pre>
     <div class="card">
       <div class="card-body">
-        <form [formGroup]="form" class="form-horizontal">
+        <form [formGroup]="form" (ngSubmit)="doSubmit()" class="form-horizontal">
           <fieldset>
             <div class="form-group" [class.has-error]="form.controls.name.invalid">
               <label class="col-sm-2 control-label">Name</label>
@@ -54,6 +54,8 @@
               </div>
             </div>
           </fieldset>
+          <input type="submit" value="送出">
+          <input type="button" value="重設" (click)="doReset()">
           <fieldset>
             <div class="form-group">
               <label for="input-id-1" class="col-sm-2 control-label">Label focus</label>
