@@ -13,6 +13,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { ClassicComponent } from './form/classic/classic.component';
 import { Classic2Component } from './form/classic2/classic2.component';
 import { BlockComponent } from './block/block.component';
+import { LoadingBtnDirective } from './loading-btn.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BlockComponent } from './block/block.component';
     LayoutComponent,
     ClassicComponent,
     Classic2Component,
-    BlockComponent
+    BlockComponent,
+    LoadingBtnDirective
   ],
   //依序載入
   imports: [
