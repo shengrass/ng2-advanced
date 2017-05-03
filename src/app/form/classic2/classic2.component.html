@@ -38,7 +38,7 @@
             <div class="form-group" [class.has-error]="form.controls.sid.invalid">
               <label class="col-sm-2 control-label">身分證字號</label>
               <div class="col-sm-10">
-                <input type="text" formControlName="sid" class="form-control"><span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                <input type="text" formControlName="sid" class="form-control">
                 <span class="help-block">
                    <span *ngIf="form.controls.sid.touched && form.controls.sid.errors?.required">此欄位必填</span>
                 <pre>

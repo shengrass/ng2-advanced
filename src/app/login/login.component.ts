@@ -7,7 +7,7 @@ import { NgForm } from "@angular/forms";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  //到'./login.component.html'找到第一個NgForm，然後存到form這個變數
   @ViewChild(NgForm)
   form: NgForm
   username: string;
