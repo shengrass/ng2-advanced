@@ -7,6 +7,7 @@ export class LoadingBtnDirective {
 
   constructor() { }
 
+  //監聽click事件
   //(click)="showLoading($event.target)"
   @HostListener('click', ['$event.target'])
   showLoading(fTest: HTMLButtonElement) {
